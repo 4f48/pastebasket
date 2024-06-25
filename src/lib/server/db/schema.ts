@@ -1,7 +1,9 @@
-import { pgTable, serial, text, integer } from 'drizzle-orm/pg-core';
+import { boolean, pgTable, serial, text, timestamp, varchar } from 'drizzle-orm/pg-core';
 
-export const user = pgTable('user', {
-	id: serial('id').primaryKey(),
-	name: text('name').notNull(),
-	age: integer('age')
+export const pastes = pgTable('pastes', {
+	id: serial('id').unique().primaryKey(),
+	title: varchar('title', { length: 50 }).notNull(),
+	content: text("content").notNull(),
+	timestamp: timestamp("timestamp").defaultNow().notNull(),
+	listed: boolean("listed").default(true).notNull(),
 });
