@@ -1,6 +1,6 @@
 import { boolean, pgTable, serial, text, timestamp, varchar } from 'drizzle-orm/pg-core';
 
-export const pastes = pgTable('pastes', {
+export const baskets = pgTable('baskets', {
 	id: serial('id').unique().primaryKey(),
 	title: varchar('title', { length: 50 }).notNull(),
 	content: text('content').notNull(),
