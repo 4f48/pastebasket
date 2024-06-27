@@ -1,0 +1,1 @@
+CREATE INDEX IF NOT EXISTS "title_search_index" ON "baskets" USING gin (to_tsvector('english', "title"));
