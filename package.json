@@ -46,6 +46,7 @@
 		"clsx": "^2.1.1",
 		"drizzle-orm": "^0.31.2",
 		"formsnap": "^1.0.1",
+		"lucide-svelte": "^0.397.0",
 		"mode-watcher": "^0.3.1",
 		"svelte-sonner": "^0.3.24",
 		"sveltekit-superforms": "^2.15.1",

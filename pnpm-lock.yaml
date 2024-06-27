@@ -23,6 +23,9 @@ importers:
       formsnap:
         specifier: ^1.0.1
         version: 1.0.1(svelte@4.2.18)(sveltekit-superforms@2.15.1(@sveltejs/kit@2.5.17(@sveltejs/vite-plugin-svelte@3.1.1(svelte@4.2.18)(vite@5.3.1(@types/node@20.14.8)))(svelte@4.2.18)(vite@5.3.1(@types/node@20.14.8)))(svelte@4.2.18))
+      lucide-svelte:
+        specifier: ^0.397.0
+        version: 0.397.0(svelte@4.2.18)
       mode-watcher:
         specifier: ^0.3.1
         version: 0.3.1(svelte@4.2.18)
@@ -1527,6 +1530,11 @@ packages:
   lru-cache@10.2.2:
     resolution: {integrity: sha512-9hp3Vp2/hFQUiIwKo8XCeFVnrg8Pk3TYNPIR7tJADKi5YfcF7vEaK7avFHTlSy3kOKYaJQaalfEo6YuXdceBOQ==}
     engines: {node: 14 || >=16.14}
+
+  lucide-svelte@0.397.0:
+    resolution: {integrity: sha512-nudZ8081toOBntBOcafJzO+12Jl55jUkM3ypq/LFEG62NbwmNM7TyXIT5J3OoIYfj4iVCK32tp83e4KQcAd46g==}
+    peerDependencies:
+      svelte: ^3 || ^4 || ^5.0.0-next.42
 
   magic-string@0.30.10:
     resolution: {integrity: sha512-iIRwTIf0QKV3UAnYK4PU8uiEc4SRh5jX0mwpIwETPpHdhVM4f53RSwS/vXvN1JhGX+Cs7B8qIq3d6AH49O5fAQ==}
@@ -3512,6 +3520,10 @@ snapshots:
   lodash.merge@4.6.2: {}
 
   lru-cache@10.2.2: {}
+
+  lucide-svelte@0.397.0(svelte@4.2.18):
+    dependencies:
+      svelte: 4.2.18
 
   magic-string@0.30.10:
     dependencies:
