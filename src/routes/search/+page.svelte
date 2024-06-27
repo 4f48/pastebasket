@@ -10,10 +10,10 @@
 
 {#if form?.results}
 	{#each form.results as result}
-		<div class="flex list-none gap-5">
+		<a href={`/basket/${result.id}`} class="flex list-none gap-5">
 			<li>{result.id}</li>
 			<li>{result.title}</li>
 			<li>{result.timestamp}</li>
-		</div>
+		</a>
 	{/each}
 {/if}
