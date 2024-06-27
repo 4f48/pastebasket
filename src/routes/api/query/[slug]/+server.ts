@@ -5,7 +5,7 @@ import { eq } from 'drizzle-orm';
 import { json } from '@sveltejs/kit';
 
 export const GET: RequestHandler = async ({ params }) => {
-    const response = await db.query.baskets.findFirst({
+	const response = await db.query.baskets.findFirst({
 		where: eq(baskets.id, params.slug)
 	});
 

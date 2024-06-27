@@ -1,7 +1,7 @@
 <script lang="ts">
 	import type { PageData } from './$types.js';
-	import SettingsForm from '../components/form.svelte';
+	import Form from '../components/forms/paste.svelte';
 	export let data: PageData;
 </script>
 
-<SettingsForm data={data.form} />
+<Form data={data.form} />
