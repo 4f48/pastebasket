@@ -2,9 +2,11 @@ import type { PageServerLoad, Actions } from './$types';
 import { fail } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
-import { formSchema } from '@/forms/paste';
+import { formSchema } from '@/forms/search';
 
-import { paste } from '@/server/common/insert';
+import { db } from '@/server/db';
+import { eq } from 'drizzle-orm';
+import { baskets } from '@/server/db/schema';
 
 export const load: PageServerLoad = async () => {
 	return {
@@ -21,11 +23,12 @@ export const actions: Actions = {
 			});
 		}
 
-		await paste({
-			title: form.data.title,
-			content: form.data.content
+		// implement search later
+		const results = await db.query.baskets.findMany({
+			limit: 20,
+			where: eq(baskets.listed, true)
 		});
 
-		return { form };
+		return { form, results };
 	}
 };

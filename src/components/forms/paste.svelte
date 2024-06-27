@@ -3,7 +3,7 @@
 	import { Input } from '@/components/ui/input';
 	import { Textarea } from '@/components/ui/textarea';
 	import { toast } from 'svelte-sonner';
-	import { formSchema, type FormSchema } from '@/forms';
+	import { formSchema, type FormSchema } from '@/forms/paste';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 
