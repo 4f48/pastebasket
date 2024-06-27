@@ -8,5 +8,5 @@ export const load: PageServerLoad = async ({ params }) => {
 		where: eq(baskets.id, Number(params.id))
 	});
 
-    return { response };
+	return { response };
 };
