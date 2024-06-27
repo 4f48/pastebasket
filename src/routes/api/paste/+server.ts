@@ -6,7 +6,7 @@ export const POST: RequestHandler = async ({ request }) => {
 	let req: Values;
 	try {
 		req = await request.json();
-	} catch (error) {
+	} catch {
 		return json({
 			error: 'malformatted json body'
 		});
