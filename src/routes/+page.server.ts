@@ -4,6 +4,8 @@ import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { formSchema } from '@/forms';
 
+import { paste } from "@/server/common/insert";
+
 export const load: PageServerLoad = async () => {
 	return {
 		form: await superValidate(zod(formSchema))
@@ -18,8 +20,12 @@ export const actions: Actions = {
 				form
 			});
 		}
-		return {
-			form
-		};
+
+		await paste({
+			title: form.data.title,
+			content: form.data.content
+		})
+
+		return { form };
 	}
 };

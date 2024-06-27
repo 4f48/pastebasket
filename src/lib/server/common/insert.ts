@@ -1,7 +1,7 @@
 import { db } from '@/server/db/index';
 import { baskets } from '@/server/db/schema';
 
-export type Values = {
+type Values = {
 	title: string;
 	content: string;
 };
