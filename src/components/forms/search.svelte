@@ -14,7 +14,7 @@
 	const { form: formData, enhance } = form;
 </script>
 
-<form method="POST" use:enhance class="flex gap-2 w-full justify-center">
+<form method="POST" use:enhance class="flex w-full justify-center gap-2">
 	<Form.Field {form} name="title">
 		<Form.Control let:attrs>
 			<Input {...attrs} bind:value={$formData.title} placeholder="Search..." />

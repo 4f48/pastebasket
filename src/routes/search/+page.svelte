@@ -2,7 +2,7 @@
 	import type { PageData, ActionData } from './$types';
 	import Search from '../../components/forms/search.svelte';
 
-	import * as Table from "$lib/components/ui/table";
+	import * as Table from '$lib/components/ui/table';
 	import { goto } from '$app/navigation';
 
 	export let data: PageData;
@@ -23,13 +23,24 @@
 		<Table.Body>
 			{#each form.results as result}
 				{#if result.listed}
-						<Table.Row class="cursor-pointer" aria-label="Click on this row to open this basket." on:click={() => {
+					<Table.Row
+						class="cursor-pointer"
+						role="link"
+						aria-label="open this basket"
+						on:click={() => {
 							goto(`/basket/${result.id}`);
-						}}>
-							<Table.Cell class="w-10">{result.id}</Table.Cell>
-							<Table.Cell>{result.title}</Table.Cell>
-							<Table.Cell class="text-right font-mono">{result.timestamp.toLocaleDateString()} {result.timestamp.toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}</Table.Cell>
-						</Table.Row>
+						}}
+					>
+						<Table.Cell class="w-10">{result.id}</Table.Cell>
+						<Table.Cell>{result.title}</Table.Cell>
+						<Table.Cell class="text-right font-mono"
+							>{result.timestamp.toLocaleDateString()}
+							{result.timestamp.toLocaleTimeString([], {
+								hour: '2-digit',
+								minute: '2-digit'
+							})}</Table.Cell
+						>
+					</Table.Row>
 				{/if}
 			{/each}
 		</Table.Body>
