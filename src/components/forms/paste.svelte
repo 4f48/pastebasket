@@ -6,6 +6,7 @@
 	import { formSchema, type FormSchema } from '@/forms/paste';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
+	import { Button } from '@/components/ui/button';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 
@@ -26,17 +27,25 @@
 <form method="POST" use:enhance>
 	<Form.Field {form} name="title">
 		<Form.Control let:attrs>
-			<Form.Label>Title</Form.Label>
-			<Input {...attrs} bind:value={$formData.title} />
+			<Form.Label class="text-xl">New basket</Form.Label>
+			<Input {...attrs} bind:value={$formData.title} placeholder="Title" />
 		</Form.Control>
 		<Form.FieldErrors />
 	</Form.Field>
 	<Form.Field {form} name="content">
 		<Form.Control let:attrs>
-			<Form.Label>Content</Form.Label>
 			<Textarea {...attrs} bind:value={$formData.content} />
 		</Form.Control>
+		<Form.Description
+			>By pasting this basket you agree to the <a href="/legal/content"
+				><Button size="sm" variant="link" class="m-0 p-0">content policy</Button></a
+			>
+			and the
+			<a href="/legal/privacy"
+				><Button size="sm" variant="link" class="m-0 p-0">privacy policy</Button></a
+			>.</Form.Description
+		>
 		<Form.FieldErrors />
 	</Form.Field>
-	<Form.Button>Submit</Form.Button>
+	<Form.Button>Paste</Form.Button>
 </form>

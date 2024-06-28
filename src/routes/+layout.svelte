@@ -10,6 +10,8 @@
 <Toaster />
 
 <Header />
-<slot />
+<div class="mx-5 mt-3">
+	<slot />
+</div>
 
 <style></style>

@@ -14,11 +14,10 @@
 	const { form: formData, enhance } = form;
 </script>
 
-<form method="POST" use:enhance>
+<form method="POST" use:enhance class="flex gap-2 w-full justify-center">
 	<Form.Field {form} name="title">
 		<Form.Control let:attrs>
-			<Form.Label>Title</Form.Label>
-			<Input {...attrs} bind:value={$formData.title} />
+			<Input {...attrs} bind:value={$formData.title} placeholder="Search..." />
 		</Form.Control>
 		<Form.FieldErrors />
 	</Form.Field>
