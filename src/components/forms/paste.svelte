@@ -4,17 +4,27 @@
 	import { Textarea } from '@/components/ui/textarea';
 	import { toast } from 'svelte-sonner';
 	import { formSchema, type FormSchema } from '@/forms/paste';
-	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
+	import {
+		type SuperValidated,
+		type Infer,
+		superForm,
+		type FormResult
+	} from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
 	import { Button } from '@/components/ui/button';
+	import type { ActionData } from './$types';
+	import { goto } from '$app/navigation';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 
 	const form = superForm(data, {
 		validators: zodClient(formSchema),
-		onUpdated: ({ form: f }) => {
-			if (f.valid) {
+		onUpdate: ({ form: f, result: r }) => {
+			const action = r.data as FormResult<ActionData>;
+
+			if (f.valid && action.id) {
 				toast.success('Your basket was successfully pasted.');
+				setTimeout(() => goto(`/basket/${action.id}`), 1000);
 			} else {
 				toast.error('Something went wrong pasting your basket.');
 			}
@@ -38,11 +48,11 @@
 		</Form.Control>
 		<Form.Description
 			>By pasting this basket you agree to the <a href="/legal/content"
-				><Button size="sm" variant="link" class="m-0 p-0">content policy</Button></a
+				><Button size="sm" variant="link" class="m-0 p-0 font-bold">content policy</Button></a
 			>
 			and the
 			<a href="/legal/privacy"
-				><Button size="sm" variant="link" class="m-0 p-0">privacy policy</Button></a
+				><Button size="sm" variant="link" class="m-0 p-0 font-bold">privacy policy</Button></a
 			>.</Form.Description
 		>
 		<Form.FieldErrors />

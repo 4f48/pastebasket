@@ -23,7 +23,6 @@ export const actions: Actions = {
 			});
 		}
 
-		// implement search later
 		const results = await db.query.baskets.findMany({
 			limit: 20,
 			where: sql`to_tsvector('english', ${baskets.title}) @@ websearch_to_tsquery('english', ${form.data.title})`

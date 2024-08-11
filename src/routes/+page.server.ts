@@ -1,8 +1,9 @@
 import type { PageServerLoad, Actions } from './$types';
-import { fail } from '@sveltejs/kit';
+import { fail, redirect } from '@sveltejs/kit';
 import { superValidate } from 'sveltekit-superforms';
 import { zod } from 'sveltekit-superforms/adapters';
 import { formSchema } from '@/forms/paste';
+import { goto } from '$app/navigation';
 
 import { paste } from '@/server/common/insert';
 
@@ -21,11 +22,11 @@ export const actions: Actions = {
 			});
 		}
 
-		await paste({
+		let id = await paste({
 			title: form.data.title,
 			content: form.data.content
 		});
 
-		return { form };
+		return { form, id };
 	}
 };

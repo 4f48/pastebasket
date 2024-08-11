@@ -9,6 +9,11 @@
 	export let form: ActionData;
 </script>
 
+<svelte:head>
+	<title>Search on Pastebasket</title>
+	<meta name="description" content="Search for baskets on Pastebasket" />
+</svelte:head>
+
 <Search data={data.form} />
 
 {#if form?.results}

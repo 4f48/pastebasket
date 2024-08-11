@@ -10,7 +10,7 @@ export const load: PageServerLoad = async ({ params }) => {
 	});
 
 	if (!response) {
-		error(400, "This basket does not exist.")
+		error(400, 'This basket does not exist.');
 	}
 
 	return { response };

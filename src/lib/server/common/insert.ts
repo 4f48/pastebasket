@@ -6,9 +6,14 @@ export type Values = {
 	content: string;
 };
 
-export async function paste(values: Values) {
-	await db.insert(baskets).values({
-		title: values.title,
-		content: values.content
-	});
+export async function paste(values: Values): Promise<number> {
+	let id = await db
+		.insert(baskets)
+		.values({
+			title: values.title,
+			content: values.content
+		})
+		.returning({ insertedId: baskets.id });
+
+	return id[0].insertedId;
 }
