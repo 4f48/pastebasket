@@ -14,6 +14,7 @@
 	import { Button } from '@/components/ui/button';
 	import type { ActionData } from './$types';
 	import { goto } from '$app/navigation';
+	import { ClipboardPaste } from 'lucide-svelte';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 
@@ -37,8 +38,7 @@
 <form method="POST" use:enhance>
 	<Form.Field {form} name="title">
 		<Form.Control let:attrs>
-			<Form.Label class="text-xl">New basket</Form.Label>
-			<Input {...attrs} bind:value={$formData.title} placeholder="Title" />
+			<Input {...attrs} bind:value={$formData.title} id="title_input" placeholder="Title" />
 		</Form.Control>
 		<Form.FieldErrors />
 	</Form.Field>
@@ -57,5 +57,5 @@
 		>
 		<Form.FieldErrors />
 	</Form.Field>
-	<Form.Button>Paste</Form.Button>
+	<Form.Button class="flex gap-2"><ClipboardPaste size="16px" />Paste</Form.Button>
 </form>

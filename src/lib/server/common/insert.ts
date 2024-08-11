@@ -7,7 +7,7 @@ export type Values = {
 };
 
 export async function paste(values: Values): Promise<number> {
-	let id = await db
+	const id = await db
 		.insert(baskets)
 		.values({
 			title: values.title,

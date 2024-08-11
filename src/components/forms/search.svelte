@@ -4,6 +4,7 @@
 	import { formSchema, type FormSchema } from '@/forms/search';
 	import { type SuperValidated, type Infer, superForm } from 'sveltekit-superforms';
 	import { zodClient } from 'sveltekit-superforms/adapters';
+	import { Search } from 'lucide-svelte';
 
 	export let data: SuperValidated<Infer<FormSchema>>;
 
@@ -17,9 +18,9 @@
 <form method="POST" use:enhance class="flex w-full justify-center gap-2">
 	<Form.Field {form} name="title">
 		<Form.Control let:attrs>
-			<Input {...attrs} bind:value={$formData.title} placeholder="Search..." />
+			<Input {...attrs} bind:value={$formData.title} placeholder="Title..." />
 		</Form.Control>
 		<Form.FieldErrors />
 	</Form.Field>
-	<Form.Button>Search</Form.Button>
+	<Form.Button class="flex gap-2"><Search size="16px" />Search</Form.Button>
 </form>
